@@ -8,6 +8,11 @@ import ClassicEditorBase from '@ckeditor/ckeditor5-editor-classic/src/classicedi
 
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
+import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
+import RemoveFormat from '@ckeditor/ckeditor5-remove-format/src/removeformat';
+import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
+import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
+import Code from '@ckeditor/ckeditor5-basic-styles/src/code';
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
@@ -52,34 +57,42 @@ ClassicEditor.builtinPlugins = [
 	Paragraph,
 	PasteFromOffice,
 	Table,
-	TableToolbar
+	TableToolbar,
+	Alignment,
+	RemoveFormat,
+	Strikethrough,
+	Underline,
+	Code,
 ];
 
 // Editor configuration.
 ClassicEditor.defaultConfig = {
 	toolbar: {
 		items: [
-			'heading',
-			'|',
-			'bold',
-			'italic',
-			'link',
-			'bulletedList',
-			'numberedList',
-			'imageUpload',
-			'blockQuote',
-			'insertTable',
-			'mediaEmbed',
-			'undo',
-			'redo'
-		]
+			'removeFormat', '|',
+			'undo', 'redo', '|',
+			'heading', '|',
+			'bold', 'italic', 'underline', 'strikethrough', 'code', '|',
+			'bulletedList', 'numberedList', '|',
+			'alignment', '|',
+			'insertTable', '|',
+			'imageUpload', 'link',
+		],
 	},
 	image: {
 		toolbar: [
-			'imageStyle:full',
-			'imageStyle:side',
+			'imageTextAlternative',
 			'|',
-			'imageTextAlternative'
+			'imageStyle:alignLeft',
+			'imageStyle:alignCenter',
+			'imageStyle:alignRight',
+			'imageStyle:full',
+		],
+		styles: [
+			'full',
+			'alignLeft',
+			'alignCenter',
+			'alignRight',
 		]
 	},
 	table: {
@@ -90,5 +103,5 @@ ClassicEditor.defaultConfig = {
 		]
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
-	language: 'en'
+	language: 'fr'
 };
